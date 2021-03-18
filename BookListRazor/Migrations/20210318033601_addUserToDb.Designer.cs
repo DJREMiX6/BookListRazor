@@ -3,14 +3,16 @@ using BookListRazor.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookListRazor.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210318033601_addUserToDb")]
+    partial class addUserToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,6 @@ namespace BookListRazor.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsLoggedIn")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -62,25 +61,6 @@ namespace BookListRazor.Migrations
 
                     b.ToTable("User");
                 });
-
-            modelBuilder.Entity("BookListRazor.Model.LoginToken", b => {
-                b.Property<int>("Id")
-                .ValueGeneratedOnAdd()
-                .HasColumnType("int")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                b.Property<int>("UserId")
-                .HasColumnType("int")
-                .IsRequired();
-
-                b.Property<string>("Token")
-                .HasColumnType("nvarchar(max)")
-                .IsRequired();
-
-                b.Property<string>("CreationTime")
-                .HasColumnType("datetime")
-                .IsRequired();
-            });
 #pragma warning restore 612, 618
         }
     }

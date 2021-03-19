@@ -3,7 +3,7 @@
 
 
 <br />
-<h2 class="text-info">Edit Book</h2>
+<h2 class="text-info">@(Model.Book.Id != 0 ? "Edit" : "Create") </h2>
 
 <div class="border container" style="padding:30px;">
     <form method="post">
@@ -11,7 +11,10 @@
 
         @*Id Section*@
         @*By doing this the client can inject thw wrong id and modify another row by just changing the value of the input*@
-        <input type="hidden" asp-for="Book.Id" />
+        @if (Model.Book.Id != 0)
+        {
+            <input type="hidden" asp-for="Book.Id" />
+        }
 
         @*Name Section*@
         <div class="form-group row">
@@ -55,7 +58,7 @@
         @*Button Section*@
         <div class="form-group row">
             <div class="col-4 offset-3">
-                <input type="submit" value="Update" class="btn btn-primary form-control" />
+                <input type="submit" value="@(Model.Book.Id != 0 ? "Update" : "Create")" class="btn btn-primary form-control" />
             </div>
             <div class="col-4">
                 <a asp-page="Index" class="btn btn-success form-control">Back to List</a>

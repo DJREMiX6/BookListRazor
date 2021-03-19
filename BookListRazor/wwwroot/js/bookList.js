@@ -20,7 +20,7 @@ function loadDataTable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center" style="margin: 0 auto; padding: 0px;">\
-                                <a href="/BookList/EditBook?id=${data}" class="btn btn-success text-white" style="cursor: pointer; width: 40%; margin: 0 auto; margin-right: 5%;">Edit</a>\
+                                <a href="/BookList/UpsertBook?id=${data}" class="btn btn-success text-white" style="cursor: pointer; width: 40%; margin: 0 auto; margin-right: 5%;">Edit</a>\
                                 <a class="btn btn-danger text-white" onclick="DeleteBook(${data})" style="cursor: pointer; width: 40%; margin: 0 auto; margin-left: 5%;">Delete</a>\
                             </div>`;
                 },
